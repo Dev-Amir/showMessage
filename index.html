@@ -3,15 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>show message with default alert</title>
+  <title>show message with custom alert</title>
+
+  <style>
+    .alert{
+      position:relative;
+      padding:1rem 1rem;
+      margin-bottom:1rem;
+      border:1px solid transparent;
+      border-radius:.25rem;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .alert-success {
+      color:#0f5132;
+      background-color:#d1e7dd;
+      border-color:#badbcc;
+    }
+    
+    .d-none {
+      display: none;
+    }
+  </style>
 </head>
 <body>
+  <div class="alert alert-success d-none" id="custom-alert">
+    نمایش پیامک مورد نظر  
+  </div>
+
   <form id="form">
     <button type="submit">Submit</button>
   </form>
 
   <script>
     const form = document.querySelector("#form");
+    const customAlert = document.querySelector("#custom-alert");
 
     form.addEventListener('submit', handlerSubmitForm);
 
@@ -19,7 +46,7 @@
       event.preventDefault();
 
       setTimeout(() => {
-        alert("Show Default Message");
+        customAlert.classList.remove('d-none')
       }, 500);
     }
   </script>
